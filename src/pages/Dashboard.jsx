@@ -1,22 +1,22 @@
+// Dashboard.jsx
 import styled from "styled-components";
+import RevenueCharts from "../components/Dashboard/RevenueCharts";
 
 const Dashboard = () => {
   return (
     <DashboardPageContainer>
-      <h1>Dashboard</h1>
-      <p>Welcome to the dashboard!</p>
+      <RevenueCharts />
+      <p>Welcome to the RevIntel Dashboard!</p>
     </DashboardPageContainer>
   );
 };
 
 const DashboardPageContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  height: 100%;
+  padding: 20px;
   width: 100%;
-  background-color: #f0f0f0;
 `;
 
 export default Dashboard;
