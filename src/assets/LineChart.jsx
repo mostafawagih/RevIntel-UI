@@ -1,11 +1,10 @@
 import React, { useMemo, useRef } from "react";
 import { Line } from "react-chartjs-2";
-// eslint-disable-next-line
 import { Chart as ChartJS } from "chart.js/auto";
 import styled from "styled-components";
+import { toRgba } from "../utils/ChartUtils";
 
 const LineChart = ({ chartData, displayLegend = false, ...props }) => {
-  // create a stable unique key per mount
   const chartKey = useMemo(() => crypto.randomUUID(), []);
   const chartRef = useRef(null);
 
@@ -41,7 +40,7 @@ const LineChart = ({ chartData, displayLegend = false, ...props }) => {
       },
       legend: {
         display: displayLegend,
-        position: "bottom",
+        position: "top",
         labels: {
           usePointStyle: true,
           boxWidth: 5,
@@ -52,12 +51,46 @@ const LineChart = ({ chartData, displayLegend = false, ...props }) => {
     },
   };
 
+  const dataWithGradient = useMemo(() => {
+    if (!chartData) return chartData;
+
+    return {
+      ...chartData,
+      datasets: chartData.datasets.map((ds) => ({
+        ...ds,
+        fill: "start",
+        backgroundColor: (context) => {
+          const { chart } = context;
+          const { ctx, chartArea } = chart || {};
+          if (!chartArea) {
+            return toRgba(ds.borderColor, 0.25);
+          }
+          const gradient = ctx.createLinearGradient(
+            0,
+            chartArea.top,
+            0,
+            chartArea.bottom
+          );
+          gradient.addColorStop(
+            0,
+            ds.fillTopColor ?? toRgba(ds.borderColor, 0.35)
+          );
+          gradient.addColorStop(
+            1,
+            ds.fillBottomColor ?? toRgba(ds.borderColor, 0)
+          );
+          return gradient;
+        },
+      })),
+    };
+  }, [chartData]);
+
   return (
     <StyledChart {...props}>
       <Line
-        key={chartKey} // force a fresh canvas/instance
-        ref={chartRef} // so we can destroy on unmount
-        data={chartData}
+        key={chartKey}
+        ref={chartRef}
+        data={dataWithGradient}
         options={options}
       />
     </StyledChart>
@@ -66,14 +99,8 @@ const LineChart = ({ chartData, displayLegend = false, ...props }) => {
 
 const StyledChart = styled.div`
   width: 100%;
-  height: 500px;
-  margin: auto;
-  margin-top: 2vw;
-  @media print {
-    canvas {
-      max-width: 100%;
-    }
-  }
+  margin: 0;
+  height: 100%;
 `;
 
 export default LineChart;

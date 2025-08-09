@@ -59,7 +59,7 @@ const MainLayout = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #f8f9fa;
+  background-color: white;
   min-height: 100vh;
   padding: 0;
 `;
@@ -116,7 +116,6 @@ const PageTitle = styled.h1`
 const PageContent = styled.main`
   flex: 1;
   overflow-y: auto;
-  background-color: #f8f9fa;
 `;
 
 export default App;
