@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ChurnCharts from "../components/Churn/ChurnCharts";
+import ChurnTable from "../components/Churn/ChurnTable";
 
 const ChurnPrediction = () => {
   return (
@@ -11,6 +12,7 @@ const ChurnPrediction = () => {
         </p>
       </div>
       <ChurnCharts />
+      <ChurnTable />
     </ChurnPredictionPageContainer>
   );
 };

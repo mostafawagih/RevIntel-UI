@@ -17,5 +17,6 @@ const ChartsWrapper = styled.div`
   height: 450px;
   justify-content: space-between;
   gap: 20px;
+  margin-bottom: 20px;
 `;
 export default ChurnCharts;

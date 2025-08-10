@@ -111,21 +111,21 @@ const LogoIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   color: white;
 
   img,
   svg {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     filter: brightness(0) invert(1);
   }
 `;
 
 const LogoText = styled.h1`
   color: white;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   font-weight: 700;
   margin: 0;
 `;
@@ -160,7 +160,7 @@ const NavTitle = styled.h2`
   font-weight: 00;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin: 0 0 20px 0;
+  margin: 0 0 10px 0;
 `;
 
 const NavList = styled.ul`

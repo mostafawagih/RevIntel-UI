@@ -17,13 +17,15 @@ const LineChart = ({ chartData, displayLegend = false, ...props }) => {
     pointHoverRadius: 5,
     scales: {
       x: {
-        ticks: { font: { family: "Lato" }, color: "black" },
+        ticks: { color: "black" },
         grid: { display: false },
+        border: { display: false },
       },
       y: {
         beginAtZero: true,
-        ticks: { font: { family: "Lato" }, color: "black" },
+        ticks: { color: "black" },
         grid: { display: false },
+        border: { display: false },
       },
     },
     plugins: {
@@ -45,7 +47,6 @@ const LineChart = ({ chartData, displayLegend = false, ...props }) => {
           usePointStyle: true,
           boxWidth: 5,
           boxHeight: 5,
-          font: { family: "Lato" },
         },
       },
     },

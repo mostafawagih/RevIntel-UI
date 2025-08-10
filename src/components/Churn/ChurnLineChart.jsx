@@ -8,13 +8,13 @@ const ChurnLineChart = () => {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"],
     datasets: [
       {
-        label: "Sales",
+        label: "rate",
         data: [120, 150, 180, 90, 200, 170],
         borderColor: COLORS.RED,
         tension: 0.1,
       },
       {
-        label: "Predicted Sales",
+        label: "predicted",
         data: [130, 160, 175, 110, 210, 180, 150, 145, 120],
         borderColor: "#808080",
         tension: 0.1,

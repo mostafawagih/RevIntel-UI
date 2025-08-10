@@ -17,10 +17,10 @@ const CardWrapper = styled.div`
   border: 1px solid #e9ecef;
   border-radius: 10px;
   padding: 20px;
+  margin: 10px;
   width: ${({ width }) => width || "100%"};
   height: ${({ height }) => height || "100%"};
   box-sizing: border-box;
-
   display: flex;
   flex-direction: column;
 
