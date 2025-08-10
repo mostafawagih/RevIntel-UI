@@ -8,7 +8,7 @@ import Sidebar from "./components/SideBar";
 import openPanelIcon from "./assets/icons/OpenPanelIcon.svg";
 
 function App() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const routes = [
     { path: "/dashboard", element: <Dashboard /> },
@@ -31,7 +31,7 @@ function App() {
         </Header>
         <PageContent>
           <Routes>
-            <Route path="/" element={<Navigate to="/dashboard" />} />
+            <Route path="/" element={<Navigate to="/churn-prediction" />} />
             {routes.map((route) => (
               <Route
                 key={route.path}
