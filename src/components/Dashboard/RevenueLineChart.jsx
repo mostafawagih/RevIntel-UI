@@ -1,18 +1,18 @@
 import styled from "styled-components";
 import LineChart from "../../assets/LineChart";
-import VisualCard from "../../assets/VisualCard";
+import { COLORS } from "../../constants";
 
-const RevenueLineChart = () => {
+const RevenueLineChart = ({ datasets, labels }) => {
+  const processedDatasets = datasets?.map((dataset) => ({
+    ...dataset,
+    tension: 0.1,
+
+    borderColor: COLORS.BABY_BLUE,
+  }));
+
   const chartData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-    datasets: [
-      {
-        label: "Sales",
-        data: [120, 150, 180, 90, 200, 170],
-        borderColor: "#0084C7",
-        tension: 0.1,
-      },
-    ],
+    labels,
+    datasets: processedDatasets || [],
   };
 
   return (

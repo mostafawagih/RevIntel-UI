@@ -3,44 +3,19 @@ import VisualCard from "../../assets/VisualCard";
 import { COLORS } from "../../constants";
 import BarChart from "../../assets/BarChart";
 
-const ChurnTable = () => {
-  const churnRiskData = [
-    {
-      Customer: "Acme Corp",
-      RiskScore: "87%",
-      PlanTier: "Enterprise",
-      MRR: "$12,500",
-      RiskIndicators: ["Decreased usage", "Support tickets"],
-    },
-    {
-      Customer: "TechWorld Inc.",
-      RiskScore: "74%",
-      PlanTier: "Pro",
-      MRR: "$4,800",
-      RiskIndicators: ["Payment delays", "Feature requests"],
-    },
-    {
-      Customer: "Global Services",
-      RiskScore: "65%",
-      PlanTier: "Enterprise",
-      MRR: "$18,200",
-      RiskIndicators: ["Competitor mentions"],
-    },
-    {
-      Customer: "DataSync Solutions",
-      RiskScore: "58%",
-      PlanTier: "Pro",
-      MRR: "$5,400",
-      RiskIndicators: ["Onboarding issues"],
-    },
-    {
-      Customer: "BrightFlow Media",
-      RiskScore: "52%",
-      PlanTier: "Basic",
-      MRR: "$2,100",
-      RiskIndicators: ["Low engagement"],
-    },
-  ];
+const ChurnTable = ({ churnRiskData }) => {
+  if (!churnRiskData || churnRiskData.length === 0) {
+    return (
+      <ChurnTableWrapper>
+        <VisualCard
+          title={"At-Risk Customers"}
+          subTitle={"Customers with highest churn probability"}
+        >
+          <p>No data available</p>
+        </VisualCard>
+      </ChurnTableWrapper>
+    );
+  }
 
   const headers = Object.keys(churnRiskData[0]);
 
@@ -85,7 +60,6 @@ const ChurnTable = () => {
                       </td>
                     );
                   }
-
                   const value = row[header];
                   return (
                     <td key={header}>

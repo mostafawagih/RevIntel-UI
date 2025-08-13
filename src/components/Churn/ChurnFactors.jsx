@@ -2,7 +2,7 @@ import styled from "styled-components";
 import VisualCard from "../../assets/VisualCard";
 import ChurnFactorsBarChart from "./ChurnBarChart";
 
-const ChurnFactors = () => {
+const ChurnFactors = ({ churnFactorsData }) => {
   return (
     <ChurnFactorsWrapper>
       <VisualCard
@@ -11,7 +11,7 @@ const ChurnFactors = () => {
         className="churn-factors-card"
       >
         <div className="churn-factors-content"></div>
-        <ChurnFactorsBarChart />
+        <ChurnFactorsBarChart churnFactorsData={churnFactorsData} />
       </VisualCard>
     </ChurnFactorsWrapper>
   );

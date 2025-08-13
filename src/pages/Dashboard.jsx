@@ -2,6 +2,15 @@ import styled from "styled-components";
 import RevenueCharts from "../components/Dashboard/RevenueCharts";
 
 const Dashboard = () => {
+  const salesData = [
+    { Jan: 120 },
+    { Feb: 150 },
+    { Mar: 180 },
+    { Apr: 90 },
+    { May: 200 },
+    { Jun: 170 },
+  ];
+
   return (
     <DashboardPageContainer>
       <div className="dashboard-title-container">
@@ -10,7 +19,7 @@ const Dashboard = () => {
           Your GTM co-pilot for accelerating growth
         </p>
       </div>
-      <RevenueCharts />
+      <RevenueCharts salesData={salesData} />
     </DashboardPageContainer>
   );
 };

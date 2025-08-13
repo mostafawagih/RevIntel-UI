@@ -2,18 +2,10 @@ import styled from "styled-components";
 import BarChart from "../../assets/BarChart";
 import { COLORS } from "../../constants";
 
-const ChurnFactorsBarChart = () => {
-  const data = [
-    { label: "Pricing Issues", percentage: 50 },
-    { label: "Support Quality", percentage: 60 },
-    { label: "Feature Gaps", percentage: 70 },
-    { label: "Competitor Offers", percentage: 20 },
-    { label: "User Experience", percentage: 10 },
-    { label: "Technical Issues", percentage: 90 },
-  ];
+const ChurnFactorsBarChart = ({ churnFactorsData }) => {
   return (
     <ChartsWrapper>
-      {data.map((item, index) => (
+      {churnFactorsData.map((item, index) => (
         <div className="bar-item-container" key={index}>
           <div className="bar-item-label-and-percentage">
             <p className="bar-item-label">{item.label}</p>

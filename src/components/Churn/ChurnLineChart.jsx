@@ -3,23 +3,26 @@ import LineChart from "../../assets/LineChart";
 import { COLORS } from "../../constants";
 import VisualCard from "../../assets/VisualCard";
 
-const ChurnLineChart = () => {
+const ChurnLineChart = ({ datasets, labels }) => {
+  const processedDatasets = datasets?.map((dataset) => ({
+    ...dataset,
+    tension: 0.1,
+
+    borderColor:
+      dataset.borderColor ||
+      (() => {
+        if (dataset.label?.toLowerCase().includes("rate")) {
+          return COLORS.RED;
+        }
+        if (dataset.label?.toLowerCase().includes("predicted")) {
+          return COLORS.LIGHT_GRAY;
+        }
+      })(),
+  }));
+
   const chartData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"],
-    datasets: [
-      {
-        label: "rate",
-        data: [120, 150, 180, 90, 200, 170],
-        borderColor: COLORS.RED,
-        tension: 0.1,
-      },
-      {
-        label: "predicted",
-        data: [130, 160, 175, 110, 210, 180, 150, 145, 120],
-        borderColor: "#808080",
-        tension: 0.1,
-      },
-    ],
+    labels,
+    datasets: processedDatasets || [],
   };
 
   return (

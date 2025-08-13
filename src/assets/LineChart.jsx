@@ -54,7 +54,6 @@ const LineChart = ({ chartData, displayLegend = false, ...props }) => {
 
   const dataWithGradient = useMemo(() => {
     if (!chartData) return chartData;
-
     return {
       ...chartData,
       datasets: chartData.datasets.map((ds) => ({
